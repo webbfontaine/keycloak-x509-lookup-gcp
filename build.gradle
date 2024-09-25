@@ -1,0 +1,36 @@
+plugins {
+    id 'java-library'
+}
+
+group = 'com.webbfontaine.keycloak'
+version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.keycloak:keycloak-core:25.0.5'
+    compileOnly 'org.keycloak:keycloak-services:25.0.5'
+    compileOnly 'org.bouncycastle:bcpkix-jdk18on:1.78.1'
+
+    testImplementation 'org.keycloak:keycloak-server-spi:25.0.5'
+    testImplementation 'org.keycloak:keycloak-crypto-default:25.0.5'
+    testImplementation 'org.keycloak:keycloak-services:25.0.5'
+    testImplementation 'jakarta.ws.rs:jakarta.ws.rs-api:4.0.0'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.13.0'
+    testImplementation 'io.quarkus:quarkus-junit5:3.15.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
